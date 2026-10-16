@@ -26,7 +26,20 @@ public class PayrollCalculator {
         payRate = scanner.nextFloat();
 
         System.out.println("Name: " + name);
-        System.out.println("Your gross pay is: " + (hourWorked * payRate));
+
+        if(hourWorked <= 40) {
+            System.out.println("Your gross pay is: " + (hourWorked * payRate));
+        } else if(hourWorked > 40){
+            float newPayRate = payRate * 1.5f;
+            float newHoursWorked = hourWorked - 40;
+            float overTimePay = newHoursWorked * payRate;
+            float grossPay = payRate * (hourWorked - newHoursWorked);
+            System.out.println("Seem like you worked over time. Your overtime pay is: "  + overTimePay);
+            System.out.println("Your Gross pay is: $" + (grossPay + overTimePay));
+
+        } else{
+            System.out.println("Invalid Input. TRY AGAIN!");
+        }
 
 
 
